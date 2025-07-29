@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Harlee's Radio Stream</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #121212;
+      color: #eee;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 30px;
+      font-weight: 700;
+      color: #ff0057;
+      text-shadow: 0 0 8px #ff0057;
+    }
+    .player {
+      background: #222;
+      border-radius: 12px;
+      padding: 30px 40px;
+      box-shadow: 0 0 20px #ff0057aa;
+      text-align: center;
+      max-width: 320px;
+      width: 100%;
+    }
+    audio {
+      width: 100%;
+      outline: none;
+      border-radius: 8px;
+      margin-top: 20px;
+      background: #333;
+    }
+    button {
+      background: #ff0057;
+      border: none;
+      color: white;
+      padding: 12px 28px;
+      font-size: 18px;
+      font-weight: 700;
+      border-radius: 40px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px #ff0057bb;
+      transition: background 0.3s ease;
+      margin-top: 10px;
+      width: 100%;
+    }
+    button:hover {
+      background: #e6004a;
+    }
+  </style>
+</head>
+<body>
+  <h1>Harlee’s Radio Stream</h1>
+  <div class="player">
+    <audio id="audioPlayer" preload="none" controls>
+      <source src="https://uk21freenew.listen2myradio.com/live.mp3?typeportmount=s1_16689_stream_600016998" type="audio/mpeg" />
+      Your browser does not support the audio element.
+    </audio>
+    <button id="playPauseBtn">Play ▶️</button>
+  </div>
+
+  <script>
+    const audio = document.getElementById('audioPlayer');
+    const btn = document.getElementById('playPauseBtn');
+
+    btn.addEventListener('click', () => {
+      if (audio.paused) {
+        audio.play();
+        btn.textContent = 'Pause ⏸️';
+      } else {
+        audio.pause();
+        btn.textContent = 'Play ▶️';
+      }
+    });
+
+    audio.addEventListener('ended', () => {
+      btn.textContent = 'Play ▶️';
+    });
+  </script>
+</body>
+</html>
